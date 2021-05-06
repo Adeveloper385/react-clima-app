@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import { Header } from './components/Header';
+import { Form } from './components/Form';
+import M from 'materialize-css'
+import '../node_modules/materialize-css/dist/css/materialize.min.css'
+
+export type Data = {
+        city: string,
+        country: string
+    }
 
 function App() {
+
+
+    const [data, setData] = useState<Data>({
+        city: "",
+        country: ""
+    })
+
+    useEffect(()=> {
+        M.AutoInit();
+    }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <Header />
+        <div style={{marginTop: '1rem'}} className="container">
+            <div className="row">
+                <div className="col md6 s12">
+                    <Form data={data} setData={setData}/> 
+                </div>
+                <div className="col md6 s12">
+
+                </div>
+            </div>
+        </div>
+    </>
   );
 }
 
