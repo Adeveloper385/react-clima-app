@@ -4,13 +4,17 @@ import { Data } from '../App'
     interface Props {
         data: Data,
         setData: Dispatch<SetStateAction<Data>>
+        setQuery: Dispatch<SetStateAction<boolean>>
     }
 
-export const Form: React.FC<Props> = ({data, setData}: Props) => {
+    type ChangeI = ChangeEvent<HTMLInputElement>
+    type ChangeS = ChangeEvent<HTMLSelectElement>
+
+export const Form: React.FC<Props> = ({data, setData, setQuery}: Props) => {
 
     const [error, setError] = useState(false)
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
+    const handleChange = (e: ChangeI | ChangeS ) => {
         setData({...data, [e.target.name] : e.target.value})
     }
 
@@ -22,6 +26,7 @@ export const Form: React.FC<Props> = ({data, setData}: Props) => {
             return;
         }
             setError(false)
+            setQuery(true)
     }
 
     return(
