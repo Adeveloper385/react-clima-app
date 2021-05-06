@@ -119,7 +119,7 @@ function App() {
                     /> 
                 </div>
                 <div className="col m6 s12">
-                   {/*result.cod === 0 ? null: component */} 
+                   {result.cod === 0 ? null: component} 
                 </div>
             </div>
             <Info />
